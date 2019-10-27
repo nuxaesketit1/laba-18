@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+	setlocale(0, "");
+
+	int m, n, k;
+	double sum = 0, p = 1;
+
+	do {
+
+		cout << "Введите количество строк и столбцов в матрице M x N ( M,N > 0) : ";
+		cin >> m >> n;
+		cout << endl;
+
+	} while ((m < 0) || (n < 0));
+
+	double** matrix = new double*[m];
+	for (int i = 0; i < m; i++) 
+		matrix[i] = new double[n];
+
+	cout << "Введите каждый элемент матрицы : " << endl;
+
+	for (int i = 0; i < m; i++)
+		for (int j = 0; j < n; j++) 
+			cin >> matrix[i][j];
+
+	do {
+
+		cout << "Введите целое число K (K > 0, но K <= M) : ";
+		cin >> k;
+		cout << endl;
+		k--;
+
+	} while ((k < 0) || (k > m));
+
+	for (int i = 0; i < n; i++) {
+		sum += matrix[k][i];
+		p *= matrix[k][i];
+	}
+
+	cout << "Результат : " << endl;
+	cout << "Сумма всех элементов " << k+1 << " строки = " << sum << "\nПроизведение всех элементов " << k+1 << " строки = " << p << endl;
+
+	cout << endl;
+	system("pause");
+	return 0;
+
+}
